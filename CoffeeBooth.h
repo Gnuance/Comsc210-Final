@@ -1,5 +1,5 @@
 /*
-    Coffee Booth: Utilizes linked list to hold values
+    Coffee Booth: Creates rand() customers and drinks. Utilizes linked list to hold values
 */
 
 #ifndef COFFEEBOOTH_H
