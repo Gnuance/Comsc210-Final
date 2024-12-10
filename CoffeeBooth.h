@@ -6,6 +6,7 @@
 #define COFFEEBOOTH_H
 #include <iostream>
 #include <list>
+#include <vector>
 using namespace std;
 
 class CoffeeBooth
@@ -21,9 +22,17 @@ private:
     // Customer queue
     list<Customer> queue;
 
+    vector<string> firstNames;
+    vector<string> lastNames;
+    const string drinkList[8] = {"Tea", "Coffee", "Sprite", "Milk", "Orange Juice", "Pepsi", "Grape Drink", "Pocari Sweat"};
+
 public:
     CoffeeBooth() {}
-    CoffeeBooth(string[], string[]) {}
+    // Constructor with name vectors to dynamically create customers
+    CoffeeBooth(const vector<string> &fNames, const vector<string> &lNames) {
+        firstNames = fNames;
+        lastNames = lNames;
+    }
 
     // Setters and getters
     string queueToString() const
@@ -33,7 +42,6 @@ public:
         {
             output += "\n" + c.name + " (" + c.drinkName + ")";
         }
-        
         return output;
     }
 
