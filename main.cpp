@@ -28,8 +28,8 @@
 using namespace std;
 
 // Values to populate 
-static const vector<string> FIRST_NAMES = {"Emma", "Olivia", "Ava", "Sophia", "Mia", "James", "Lucas", "Ethan", "Mason", "Liam"};
-static const vector<string> LAST_NAMES = {"Smith", "Johnson", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas"};
+const vector<string> FIRST_NAMES = {"Emma", "Olivia", "Ava", "Sophia", "Mia", "James", "Lucas", "Ethan", "Mason", "Liam"};
+const vector<string> LAST_NAMES = {"Smith", "Johnson", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas"};
 
 int main()
 {
