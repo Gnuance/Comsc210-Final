@@ -10,20 +10,20 @@
 #include <forward_list>
 using namespace std;
 
-class CoffeeBooth
+class KnickKnackBooth
 {
 private:
     // Vectors and arrays to populate customer info
     vector<string> firstNames;
     vector<string> lastNames;
-    static const int DRINK_LIST_SIZE = 8;
-    const string DRINK_LIST[DRINK_LIST_SIZE] = {"Figurine", "Snow Globe", "Vase", "Picture Frame", "Trinket Box", "Keychain", "Coaster", "Candlestick"};
+    static const int KNICK_KNACK_LIST_SIZE = 8;
+    const string KNICK_KNACK_LIST[KNICK_KNACK_LIST_SIZE] = {"Figurine", "Snow Globe", "Vase", "Picture Frame", "Trinket Box", "Keychain", "Coaster", "Candlestick"};
 
     // Struct representing individual customer
     struct Customer
     {
         string name;
-        string drinkName;
+        string knickKnackName;
     };
 
     // Representing a Customer
@@ -33,7 +33,7 @@ private:
 
 public:
     // Constructor with name vectors to dynamically create customers
-    CoffeeBooth(const vector<string> &fNames, const vector<string> &lNames)
+    KnickKnackBooth(const vector<string> &fNames, const vector<string> &lNames)
     {
         firstNames = fNames;
         lastNames = lNames;
@@ -48,9 +48,9 @@ public:
     {
         // Create customer name and drink
         customer.name = firstNames.at(rand() % firstNames.size()) + " " + lastNames.at(rand() % lastNames.size());
-        customer.drinkName = DRINK_LIST[rand() % DRINK_LIST_SIZE];
+        customer.knickKnackName = KNICK_KNACK_LIST[rand() % KNICK_KNACK_LIST_SIZE];
 
-        queue.push(customer);
+        queue.push_front(customer);
     }
 
     // Iterates one round of service
@@ -59,7 +59,8 @@ public:
         // Front customer always get's served and 50% chance of new customer added
         if (!queue.empty())
         {
-            queue.pop();
+            auto it = queue.cend();            
+            queue.remove(*it);
         }
         if ((rand() % 100) >= 50) // 50% chance of adding customer
         {
@@ -71,9 +72,9 @@ public:
     string queueToString() const
     {
         string output = "Coffee Booth Queue:";
-        for (auto it = queue.begin();  c : queue)
+        for (auto it = queue.cbegin(); it != queue.cend(); it++)
         {
-            output += "\n\t" + c.name + " (" + c.drinkName + ")";
+            output += "\n\t" + it->name + " (" + it->knickKnackName + ")";
         }
         return output;
     }

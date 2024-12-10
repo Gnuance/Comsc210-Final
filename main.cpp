@@ -26,6 +26,7 @@
 #include "CoffeeBooth.h"
 #include "MuffinBooth.h"
 #include "BraceletBooth.h"
+#include "KnickKnackBooth.h"
 using namespace std;
 
 // Values to populate
@@ -40,6 +41,8 @@ int main()
     MuffinBooth muffinBooth(FIRST_NAMES, LAST_NAMES);
     // Create a BraceletBooth and pass names to populate data
     BraceletBooth braceletBooth(FIRST_NAMES, LAST_NAMES);
+    // Create a KnickKnackBooth and pass names to populate data
+    KnickKnackBooth knickKnackBooth(FIRST_NAMES, LAST_NAMES);
 
     // Run iterations
     for (size_t i = 0; i < 10; i++)
@@ -57,6 +60,10 @@ int main()
         cout << braceletBooth.queueToString() << "\n"
              << endl;
         braceletBooth.iterate();
+        // Output knick knack booth queue and iterate
+        cout << knickKnackBooth.queueToString() << "\n"
+             << endl;
+        knickKnackBooth.iterate();
     }
 
     return 0;
