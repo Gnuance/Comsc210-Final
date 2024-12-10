@@ -31,19 +31,23 @@ private:
     list<Customer> queue;
 
 public:
-    CoffeeBooth() {}
     // Constructor with name vectors to dynamically create customers
     CoffeeBooth(const vector<string> &fNames, const vector<string> &lNames)
     {
         firstNames = fNames;
         lastNames = lNames;
+        for (size_t i = 0; i < 3; i++)
+        {
+            addRandCustomer();
+        }
+        
     }
 
     // Adds a random customer
     void addRandCustomer()
     {
         // Create customer name and drink
-        customer.name = firstNames.at(rand() % firstNames.size()) + lastNames.at(rand() % lastNames.size());
+        customer.name = firstNames.at(rand() % firstNames.size()) + " " + lastNames.at(rand() % lastNames.size());
         customer.drinkName = DRINK_LIST[rand() % DRINK_LIST_SIZE];
 
         queue.push_back(customer);
@@ -69,7 +73,7 @@ public:
         string output = "Coffee Booth Queue:";
         for (Customer c : queue)
         {
-            output += "\n" + c.name + " (" + c.drinkName + ")";
+            output += "\n\t" + c.name + " (" + c.drinkName + ")";
         }
         return output;
     }
