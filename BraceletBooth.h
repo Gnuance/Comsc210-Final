@@ -2,14 +2,13 @@
     Coffee Booth: Creates rand() customers and drinks. Utilizes linked list to hold values.
 */
 
-#ifndef COFFEEBOOTH_H
-#define COFFEEBOOTH_H
+#ifndef BRACELETBOOTH_H
+#define BRACELETBOOTH_H
 #include <iostream>
-#include <list>
 #include <vector>
 using namespace std;
 
-class CoffeeBooth
+class BraceletBooth
 {
 private:
     // Vectors and arrays to populate customer info
@@ -28,11 +27,11 @@ private:
     // Representing a Customer
     Customer customer;
     // Customer queue
-    list<Customer> queue;
+    vector<Customer> queue;
 
 public:
     // Constructor with name vectors to dynamically create customers
-    CoffeeBooth(const vector<string> &fNames, const vector<string> &lNames)
+    BraceletBooth(const vector<string> &fNames, const vector<string> &lNames)
     {
         firstNames = fNames;
         lastNames = lNames;
@@ -58,7 +57,7 @@ public:
         // Front customer always get's served and 50% chance of new customer added
         if (!queue.empty())
         {
-            queue.pop_front();
+            queue.erase(queue.begin());
         }
         if ((rand() % 100) >= 50) // 50% chance of adding customer
         {
@@ -69,7 +68,7 @@ public:
     // Setters and getters
     string queueToString() const
     {
-        string output = "Coffee Booth Queue:";
+        string output = "Bracelet Booth Queue:";
         for (Customer c : queue)
         {
             output += "\n\t" + c.name + " (" + c.drinkName + ")";

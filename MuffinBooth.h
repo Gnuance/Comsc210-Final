@@ -13,8 +13,8 @@ class MuffinBooth
 {
 private:
     // Vectors and arrays to populate customer info
-    static vector<string> firstNames;
-    static vector<string> lastNames;
+    vector<string> firstNamesMuffin;
+    vector<string> lastNamesMuffin;
     static const int MUFFIN_LIST_SIZE = 8;
     const string MUFFIN_LIST[MUFFIN_LIST_SIZE] = {"Blueberry", "Chocolate Chip", "Banana Nut", "Lemon Poppy Seed", "Cranberry Orange", "Apple Cinnamon", "Pumpkin Spice", "Zucchini"};
 
@@ -34,8 +34,8 @@ public:
     // Constructor with name vectors to dynamically create customers
     MuffinBooth(const vector<string> &fNames, const vector<string> &lNames)
     {
-        firstNames = fNames;
-        lastNames = lNames;
+        firstNamesMuffin = fNames;
+        lastNamesMuffin = lNames;
         for (size_t i = 0; i < 3; i++)
         {
             addRandCustomer();
@@ -46,7 +46,7 @@ public:
     void addRandCustomer()
     {
         // Create customer name and drink
-        customer.name = firstNames.at(rand() % firstNames.size()) + " " + lastNames.at(rand() % lastNames.size());
+        customer.name = firstNamesMuffin.at(rand() % firstNamesMuffin.size()) + " " + lastNamesMuffin.at(rand() % lastNamesMuffin.size());
         customer.drinkName = MUFFIN_LIST[rand() % MUFFIN_LIST_SIZE];
 
         queue.push_back(customer);
@@ -69,7 +69,7 @@ public:
     // Setters and getters
     string queueToString() const
     {
-        string output = "Coffee Booth Queue:";
+        string output = "Muffin Booth Queue:";
         for (Customer c : queue)
         {
             output += "\n\t" + c.name + " (" + c.drinkName + ")";
