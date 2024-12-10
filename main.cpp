@@ -24,6 +24,7 @@
 #include <set>
 #include <vector>
 #include "CoffeeBooth.h"
+#include "MuffinBooth.h"
 using namespace std;
 
 // Values to populate 
@@ -34,6 +35,8 @@ int main()
 {
     // Create a CoffeeBooth and pass names to populate data
     CoffeeBooth coffeeBooth(FIRST_NAMES, LAST_NAMES);
+    // Create a MuffinBooth and pass names to populate data
+    // MuffinBooth muffinBooth(FIRST_NAMES, LAST_NAMES);
 
     // Run iterations
     for (size_t i = 0; i < 10; i++)
@@ -41,6 +44,13 @@ int main()
         cout << coffeeBooth.queueToString() << "\n" << endl;
         coffeeBooth.iterate();
     }
+
+    // // Run muffin booth iterations
+    // for (size_t i = 0; i < 3; i++)
+    // {
+    //     cout << muffinBooth.queueToString() << "\n" << endl;
+    //     muffinBooth.iterate();
+    // }
 
     return 0;
 }

@@ -1,22 +1,22 @@
 /*
-    Coffee Booth: Creates rand() customers and drinks. Utilizes linked list to hold values.
+    Muffin Booth: Creates rand() customers and muffins. Utilizes deque to hold values.
 */
 
-#ifndef COFFEEBOOTH_H
-#define COFFEEBOOTH_H
+#ifndef MUFFINBOOTH_H
+#define MUFFINBOOTH_H
 #include <iostream>
-#include <list>
+#include <deque>
 #include <vector>
 using namespace std;
 
-class CoffeeBooth
+class MuffinBooth
 {
 private:
     // Vectors and arrays to populate customer info
     static vector<string> firstNames;
     static vector<string> lastNames;
-    static const int DRINK_LIST_SIZE = 8;
-    const string DRINK_LIST[DRINK_LIST_SIZE] = {"Tea", "Coffee", "Sprite", "Milk", "Orange Juice", "Pepsi", "Grape Drink", "Pocari Sweat"};
+    static const int MUFFIN_LIST_SIZE = 8;
+    const string MUFFIN_LIST[MUFFIN_LIST_SIZE] = {"Blueberry", "Chocolate Chip", "Banana Nut", "Lemon Poppy Seed", "Cranberry Orange", "Apple Cinnamon", "Pumpkin Spice", "Zucchini"};
 
     // Struct representing individual customer
     struct Customer
@@ -28,11 +28,11 @@ private:
     // Representing a Customer
     Customer customer;
     // Customer queue
-    list<Customer> queue;
+    deque<Customer> queue;
 
 public:
     // Constructor with name vectors to dynamically create customers
-    CoffeeBooth(const vector<string> &fNames, const vector<string> &lNames)
+    MuffinBooth(const vector<string> &fNames, const vector<string> &lNames)
     {
         firstNames = fNames;
         lastNames = lNames;
@@ -47,7 +47,7 @@ public:
     {
         // Create customer name and drink
         customer.name = firstNames.at(rand() % firstNames.size()) + " " + lastNames.at(rand() % lastNames.size());
-        customer.drinkName = DRINK_LIST[rand() % DRINK_LIST_SIZE];
+        customer.drinkName = MUFFIN_LIST[rand() % MUFFIN_LIST_SIZE];
 
         queue.push_back(customer);
     }
