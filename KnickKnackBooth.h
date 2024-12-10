@@ -59,7 +59,12 @@ public:
         // Front customer always get's served and 50% chance of new customer added
         if (!queue.empty())
         {
-            auto it = queue.cend();            
+            auto it = queue.begin();  
+            while (it != queue.end())
+            {
+                it++;
+            }
+            prev(it);                      
             queue.remove(*it);
         }
         if ((rand() % 100) >= 50) // 50% chance of adding customer
@@ -71,7 +76,7 @@ public:
     // Setters and getters
     string queueToString() const
     {
-        string output = "Coffee Booth Queue:";
+        string output = "Knick Knack Booth Queue:";
         for (auto it = queue.cbegin(); it != queue.cend(); it++)
         {
             output += "\n\t" + it->name + " (" + it->knickKnackName + ")";
