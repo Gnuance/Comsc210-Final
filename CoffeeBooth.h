@@ -9,6 +9,12 @@
 #include <vector>
 using namespace std;
 
+// Vectors and arrays to populate customer info
+static vector<string> firstNames;
+static vector<string> lastNames;
+static const int DRINK_LIST_SIZE = 8;
+static const string DRINK_LIST[DRINK_LIST_SIZE] = {"Tea", "Coffee", "Sprite", "Milk", "Orange Juice", "Pepsi", "Grape Drink", "Pocari Sweat"};
+
 class CoffeeBooth
 {
 private:
@@ -23,10 +29,6 @@ private:
     Customer customer;
     // Customer queue
     list<Customer> queue;
-    // Vectors and arrays to populate customer info
-    vector<string> firstNames;
-    vector<string> lastNames;
-    const string drinkList[8] = {"Tea", "Coffee", "Sprite", "Milk", "Orange Juice", "Pepsi", "Grape Drink", "Pocari Sweat"};
 
 public:
     CoffeeBooth() {}
@@ -37,13 +39,28 @@ public:
         lastNames = lNames;
     }
 
+    // Adds a random customer
     void addRandCustomer()
     {
         // Create customer name and drink
         customer.name = firstNames.at(rand() % firstNames.size()) + lastNames.at(rand() % lastNames.size());
-        customer.drinkName = drinkList[rand() % 8];
+        customer.drinkName = DRINK_LIST[rand() % DRINK_LIST_SIZE];
 
         queue.push_back(customer);
+    }
+
+    // Iterates one round of service
+    void iterate()
+    {
+        // Front customer always get's served and 50% chance of new customer added
+        if (!queue.empty())
+        {
+            queue.pop_front();
+        }
+        if ((rand() % 100) >= 50) // 50% chance of adding customer
+        {
+            addRandCustomer();
+        }
     }
 
     // Setters and getters
