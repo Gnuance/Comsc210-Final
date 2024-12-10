@@ -22,7 +22,7 @@
 #include <iomanip>
 #include <list>
 #include <set>
-#include "Goat.h"
+#include "CoffeeBooth.h"
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
