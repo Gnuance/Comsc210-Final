@@ -25,6 +25,7 @@
 #include <vector>
 #include "CoffeeBooth.h"
 #include "MuffinBooth.h"
+#include "BraceletBooth.h"
 using namespace std;
 
 // Values to populate
@@ -37,17 +38,25 @@ int main()
     CoffeeBooth coffeeBooth(FIRST_NAMES, LAST_NAMES);
     // Create a MuffinBooth and pass names to populate data
     MuffinBooth muffinBooth(FIRST_NAMES, LAST_NAMES);
+    // Create a BraceletBooth and pass names to populate data
+    BraceletBooth braceletBooth(FIRST_NAMES, LAST_NAMES);
 
     // Run iterations
     for (size_t i = 0; i < 10; i++)
     {
-        cout << "ITERATION " << i + 1 << ":\n";
+        cout << "========== ITERATION " << i + 1 << " ==========\n";
+        // Output coffee booth queue and iterate
         cout << coffeeBooth.queueToString() << "\n"
              << endl;
         coffeeBooth.iterate();
+        // Output muffin booth queue and iterate
         cout << muffinBooth.queueToString() << "\n"
              << endl;
         muffinBooth.iterate();
+        // Output bracelet booth queue and iterate
+        cout << braceletBooth.queueToString() << "\n"
+             << endl;
+        braceletBooth.iterate();
     }
 
     return 0;

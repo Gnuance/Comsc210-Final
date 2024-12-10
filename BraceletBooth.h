@@ -1,5 +1,5 @@
 /*
-    Coffee Booth: Creates rand() customers and drinks. Utilizes linked list to hold values.
+    Bracelet Booth: Creates rand() customers and bracelets. Utilizes vector to hold values.
 */
 
 #ifndef BRACELETBOOTH_H
@@ -14,14 +14,14 @@ private:
     // Vectors and arrays to populate customer info
     vector<string> firstNames;
     vector<string> lastNames;
-    static const int DRINK_LIST_SIZE = 8;
-    const string DRINK_LIST[DRINK_LIST_SIZE] = {"Tea", "Coffee", "Sprite", "Milk", "Orange Juice", "Pepsi", "Grape Drink", "Pocari Sweat"};
+    static const int BRACELET_LIST_SIZE = 8;
+    const string BRACELET_LIST[BRACELET_LIST_SIZE] = {"Charm Bracelet", "Bangle", "Cuff Bracelet", "Friendship Bracelet", "Beaded Bracelet", "Leather Bracelet", "Tennis Bracelet", "Hinged Bracelet"};
 
     // Struct representing individual customer
     struct Customer
     {
         string name;
-        string drinkName;
+        string braceletName;
     };
 
     // Representing a Customer
@@ -46,7 +46,7 @@ public:
     {
         // Create customer name and drink
         customer.name = firstNames.at(rand() % firstNames.size()) + " " + lastNames.at(rand() % lastNames.size());
-        customer.drinkName = DRINK_LIST[rand() % DRINK_LIST_SIZE];
+        customer.braceletName = BRACELET_LIST[rand() % BRACELET_LIST_SIZE];
 
         queue.push_back(customer);
     }
@@ -71,7 +71,7 @@ public:
         string output = "Bracelet Booth Queue:";
         for (Customer c : queue)
         {
-            output += "\n\t" + c.name + " (" + c.drinkName + ")";
+            output += "\n\t" + c.name + " (" + c.braceletName + ")";
         }
         return output;
     }

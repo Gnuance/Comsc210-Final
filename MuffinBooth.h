@@ -22,7 +22,7 @@ private:
     struct Customer
     {
         string name;
-        string drinkName;
+        string muffinName;
     };
 
     // Representing a Customer
@@ -47,7 +47,7 @@ public:
     {
         // Create customer name and drink
         customer.name = firstNamesMuffin.at(rand() % firstNamesMuffin.size()) + " " + lastNamesMuffin.at(rand() % lastNamesMuffin.size());
-        customer.drinkName = MUFFIN_LIST[rand() % MUFFIN_LIST_SIZE];
+        customer.muffinName = MUFFIN_LIST[rand() % MUFFIN_LIST_SIZE];
 
         queue.push_back(customer);
     }
@@ -72,7 +72,7 @@ public:
         string output = "Muffin Booth Queue:";
         for (Customer c : queue)
         {
-            output += "\n\t" + c.name + " (" + c.drinkName + ")";
+            output += "\n\t" + c.name + " (" + c.muffinName + ")";
         }
         return output;
     }
